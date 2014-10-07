@@ -4,6 +4,12 @@ BumpyRide
 (https://github.com/rubenmv/BumpyRide)
 Unity game for mobile and browsers
 
+Versión de android de la APK: 3.0
+
+El juego se trata de evitar que te golpeen los asteroides. Para ello el jugador debe tocar la pantalla con lo que produce una fuerza que repele a la nave hacia el lado contrario. La fuerza depende de la distancia que se toque con respecto a la nave, cuanto mas cerca de esta menos fuerza, se puede frenar la nave tocando en esta en su centro.
+
+Aparecen items al subir el nivel de dificultad. Estos items proporcionan invencibilidad o aplican una gravedad durante un corto periodo de tiempo. Durante la invencibilidad el jugador puede estrellar la nave contra los asteroides para conseguir mas puntos.
+
 What's new
 ----------
 
