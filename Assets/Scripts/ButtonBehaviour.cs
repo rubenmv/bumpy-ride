@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuButtonScript : MonoBehaviour {
+public class ButtonBehaviour : MonoBehaviour {
 	
 	public string buttonTag;
 	public Sprite normalSprite;
 	public Sprite activeSprite;
-	
+
 	SpriteRenderer spriteRenderer;
 	
 	void Start() {
-		spriteRenderer = (SpriteRenderer) transform.Find("ButtonSprite").gameObject.GetComponent<SpriteRenderer>();
+		spriteRenderer = (SpriteRenderer)transform.Find("ButtonSprite").gameObject.GetComponent<SpriteRenderer>();
 		spriteRenderer.sprite = normalSprite;
 	}
 	
@@ -21,12 +21,11 @@ public class MenuButtonScript : MonoBehaviour {
 		switch(buttonTag) {
 			case "quit":
 				Application.Quit();
-			break;
+				break;
 			case "new_game":
 			case "restart":
-				GameManagerScript.Instance.init();
-				Application.LoadLevel(1);
-			break;
+				GameManager.Instance.loadLevel(1);
+				break;
 		}
 	}
 	

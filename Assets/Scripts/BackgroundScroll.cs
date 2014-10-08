@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScrollScript : MonoBehaviour {
+public class BackgroundScroll : MonoBehaviour {
 	
 	public float speed = 0f;
 	GameObject player = null;

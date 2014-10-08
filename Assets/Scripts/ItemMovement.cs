@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemScript : MonoBehaviour {
+public class ItemMovement : MonoBehaviour {
 
 	float range = 10; // Sera el doble de esto
 
