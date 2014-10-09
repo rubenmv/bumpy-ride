@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AsteroidMovement : MonoBehaviour {
+public class AsteroidBehaviour : MonoBehaviour {
 	float range = 15; // Sera el doble de esto
 	
 	//TextMesh pointsText;
@@ -12,9 +12,9 @@ public class AsteroidMovement : MonoBehaviour {
 	void Start() {
 		gameManager = GameManager.Instance;
 
-		transform.position = new Vector2(20f, Random.Range(-5f, 5f));
+		transform.position = new Vector2(20f, Random.Range(-3f, 3f));
 
-		float scale = Random.Range(1f, 3f);
+		float scale = Random.Range(1f, 1.5f);
 
 		transform.localScale = new Vector2(scale, scale);
 		
