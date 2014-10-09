@@ -33,7 +33,7 @@ public class AsteroidBehaviour : MonoBehaviour {
 		
 		// El mismo meteorito es el que establece la puntuacion al morir
 		// Recogemos el componente de texto
-		if(!gameManager.gameOver) {
+		if(!gameManager.getGameOver()) {
 			//GameObject go = GameObject.Find("3DTextPoints");
 			//pointsText = (TextMesh)go.GetComponent(typeof(TextMesh));
 		}

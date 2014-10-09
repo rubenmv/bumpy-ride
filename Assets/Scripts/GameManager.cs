@@ -10,9 +10,16 @@ public class GameManager : MonoBehaviour {
 	private AudioManager _audioManager;
 	private Vector2 _windowSize;
 	
-	public bool gameOver;
+	private bool _isGameOver;
 	public int points = 0;
 	public int currentScene = 0;
+
+	public void setGameOver(bool isOver) {
+		_isGameOver = isOver;
+	}
+	public bool getGameOver() {
+		return _isGameOver;
+	}
 
 	// Persistent Singleton
 	public static GameManager Instance {
@@ -58,7 +65,7 @@ public class GameManager : MonoBehaviour {
 	
 	private void init() {
 		points = 0;
-		gameOver = false;
+		_isGameOver = false;
 	}
 
 	// Managers
@@ -76,11 +83,11 @@ public class GameManager : MonoBehaviour {
 		if(Input.GetKey("escape")) {
 			Application.Quit();
 		}
-		if(gameOver && !audio.isPlaying) {
+		if(_isGameOver) {
 			Application.LoadLevel(2);
 		}
 	}
-
+	// Load new level
 	public void loadLevel(int level) {
 		Application.LoadLevel(level);
 		init();

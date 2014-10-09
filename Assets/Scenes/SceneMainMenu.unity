@@ -235,10 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1a5a7f42f334445a75c03486b7cdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 100000, guid: 7babb9930c7d0174da326944ebbb82a6, type: 2}
-  asteroid: {fileID: 100000, guid: 615d05fa53f497e47bc9ebf054394b58, type: 2}
-  item: {fileID: 100000, guid: 069a549ea1d34234fa5ff16e559911b0, type: 2}
-  explosion: {fileID: 100000, guid: 069a549ea1d34234fa5ff16e559911b0, type: 2}
+  prefabPlayer: {fileID: 100000, guid: 7babb9930c7d0174da326944ebbb82a6, type: 2}
+  prefabAsteroid: {fileID: 100000, guid: 615d05fa53f497e47bc9ebf054394b58, type: 2}
+  prefabItem: {fileID: 100000, guid: 069a549ea1d34234fa5ff16e559911b0, type: 2}
+  prefabExplosion: {fileID: 100000, guid: 2cddeac12e547024ba619bb8cbb57126, type: 2}
 --- !u!114 &1426066544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0312538ff6ec0d545a75a79bcd254c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: 0
   points: 0
   currentScene: 0
 --- !u!4 &1426066545

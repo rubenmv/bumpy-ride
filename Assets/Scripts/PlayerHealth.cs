@@ -4,18 +4,16 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour {
 
 	public int hp = 1;
-	
 	public AudioClip deathSound;
-	
-	bool gameOver;
-	GameManager gameManager;
-	ObjectManager objectManager;
+
+	private GameManager _gameManager;
+	private ObjectManager _objectManager;
 
 	public bool invincible = false;
 	
 	void Start() {
-		gameManager = GameManager.Instance;
-		objectManager = gameManager.getObjectManager();
+		_gameManager = GameManager.Instance;
+		_objectManager = _gameManager.getObjectManager();
 
 		Random.seed = (int)System.DateTime.Now.Ticks;
 	}
@@ -24,13 +22,12 @@ public class PlayerHealth : MonoBehaviour {
 		hp -= damageCount;
 		
 		if(hp <= 0) {
-			gameManager.gameOver = true;
 			audio.clip = deathSound;
 			audio.Play();
-			Destroy(gameObject.GetComponent<SpriteRenderer>());
-			Destroy(gameObject.GetComponent<Rigidbody2D>());
-			Destroy(gameObject.GetComponent<PlayerMovement>());
-			objectManager.makeExplosion(gameObject.transform.position, Color.red);
+			_objectManager.makeExplosion(gameObject.transform.position, Color.red);
+			_gameManager.setGameOver(true);
+			Destroy(this.gameObject);
+			//this.gameObject.SetActive(false);
 		}
 	}
 }

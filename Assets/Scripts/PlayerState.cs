@@ -34,7 +34,7 @@ public class PlayerState : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-		if(!gameManager.gameOver) {
+		if(!gameManager.getGameOver()) {
 			// Item activo?
 			if(activeItem > -1) {
 				
@@ -73,7 +73,7 @@ public class PlayerState : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
-		if(collision.gameObject.tag == "Meteor") {
+		if(collision.gameObject.tag == "Asteroid") {
 			if(activeItem == 0) { // Invencible
 				// Punto para el jugador
 				gameManager.points++;
@@ -101,7 +101,7 @@ public class PlayerState : MonoBehaviour {
 			}
 			
 			itemClock = itemTime;
-			// Y destruyo el gameobject del item
+			//Disable item gameobject
 			Destroy(collision.gameObject);
 		}
 	}

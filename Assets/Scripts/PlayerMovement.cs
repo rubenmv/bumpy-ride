@@ -6,8 +6,6 @@ public class PlayerMovement : MonoBehaviour {
 	float friction = 0.98f;
 	float speed = 3;
 
-	public GameObject explosionPrefab;
-
 	Vector2 windowSize;
 
 	float leftLimit;
@@ -37,7 +35,6 @@ public class PlayerMovement : MonoBehaviour {
 			direction = new Vector2(Mathf.Clamp(direction.x, -12, 12), Mathf.Clamp(direction.y, -12, 12));
 
 			applyForce(direction);
-			makeExplosion(mouseWorld);
 
 			// Audio
 			audio.volume = 0.2f;
@@ -58,10 +55,5 @@ public class PlayerMovement : MonoBehaviour {
 	void applyForce(Vector2 direction) {
 		rigidbody2D.velocity *= 0;
 		rigidbody2D.AddForce(direction * 50);
-	}
-
-	void makeExplosion(Vector3 mouseWorld) {
-		GameObject obj = (GameObject)Instantiate(explosionPrefab, mouseWorld, Quaternion.identity);
-		Destroy(obj, obj.particleSystem.duration);
 	}
 }
