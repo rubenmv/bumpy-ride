@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guiSkin: {fileID: 11400000, guid: 4ef0c0952efd57c4abbe30e2cfd2aa2a, type: 2}
+  titleTexture: {fileID: 2800000, guid: b848d8aee562ad7419ec5325a7249a90, type: 3}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
