@@ -21,6 +21,17 @@ public class GameManager : MonoBehaviour {
 		return _isGameOver;
 	}
 
+	// Managers
+	public ObjectManager getObjectManager() {
+		return _objectManager;
+	}
+	public AudioManager getAudioManager() {
+		return _audioManager;
+	}
+	public GuiManager getGuiManager() {
+		return _guiManager;
+	}
+
 	// Persistent Singleton
 	public static GameManager Instance {
 		get {
@@ -68,25 +79,22 @@ public class GameManager : MonoBehaviour {
 		_isGameOver = false;
 	}
 
-	// Managers
-	public ObjectManager getObjectManager() {
-		return _objectManager;
-	}
-	public AudioManager getAudioManager() {
-		return _audioManager;
-	}
-	public GuiManager getGuiManager() {
-		return _guiManager;
-	}
-		
 	void Update() {
 		if(Input.GetKey("escape")) {
 			Application.Quit();
 		}
 		if(_isGameOver) {
-			Application.LoadLevel(2);
+			StartCoroutine(waitForGameOver(3f));
 		}
 	}
+	//Coroutine
+	IEnumerator waitForGameOver(float seconds) {
+		// Make sure to trigger only one coroutine (they are independent)
+		_isGameOver = false;
+		yield return new WaitForSeconds(seconds);
+		Application.LoadLevel("SceneGameOver");
+	}
+
 	// Load new level
 	public void loadLevel(int level) {
 		Application.LoadLevel(level);
