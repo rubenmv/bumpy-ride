@@ -3,16 +3,16 @@ using System.Collections;
 
 public class PlayerState : MonoBehaviour {
 	
-	float itemClock = 0f;
-	float itemTime = 5f;
-	bool gameOver;
-	GameManager gameManager;
-	ObjectManager objectManager;
-	int activeItem; // 0 = invencible, 1 = gravity
-	float alpha = 1f;
-	bool alphaDown = true;
-	SpriteRenderer spriteRenderer;
-	PlayerHealth playerHealth;
+	private float itemClock = 0f;
+	private float itemTime = 5f;
+	private GameManager gameManager;
+	private ObjectManager objectManager;
+	private int activeItem; // 0 = invencible, 1 = gravity
+	private float alpha = 1f;
+	private bool alphaDown = true;
+	private SpriteRenderer spriteRenderer;
+	private PlayerHealth playerHealth;
+    private CameraShake cameraShaker;
 
 	//TextMesh pointsText;
 
@@ -28,6 +28,8 @@ public class PlayerState : MonoBehaviour {
 		//pointsText = (TextMesh)go.GetComponent(typeof(TextMesh));
 
 		Random.seed = (int)System.DateTime.Now.Ticks;
+
+        cameraShaker = (CameraShake)Camera.main.GetComponent<CameraShake>();
 	}
 	
 	// Update is called once per frame
@@ -72,6 +74,7 @@ public class PlayerState : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
 		if(collision.gameObject.tag == "Asteroid") {
 			if(activeItem == 0) { // Invencible
+                cameraShaker.shake(0.8f);
 				// Punto para el jugador
 				gameManager.points++;
 				//pointsText.text = "PUNTOS: " + gameManager.points;
@@ -79,6 +82,7 @@ public class PlayerState : MonoBehaviour {
 				Destroy(collision.gameObject);
 				objectManager.makeExplosion(collision.gameObject.transform.position, Color.red);
 			} else {
+                cameraShaker.shake(2.0f);
 				playerHealth.damage(1);
 			}
 		} else if(collision.gameObject.tag == "Item") {
