@@ -5,11 +5,9 @@ public class PlayerState : MonoBehaviour {
 	
 	float itemClock = 0f;
 	float itemTime = 5f;
-
 	bool gameOver;
 	GameManager gameManager;
 	ObjectManager objectManager;
-
 	int activeItem; // 0 = invencible, 1 = gravity
 	float alpha = 1f;
 	bool alphaDown = true;
@@ -37,7 +35,6 @@ public class PlayerState : MonoBehaviour {
 		if(!gameManager.getGameOver()) {
 			// Item activo?
 			if(activeItem > -1) {
-				
 				if(alphaDown) {
 					alpha -= 0.1f;
 					if(alpha < 0.5f) {
@@ -51,10 +48,10 @@ public class PlayerState : MonoBehaviour {
 				}
 				
 				switch(activeItem) {
-					case 0: // Invencible
+					case 0: // Invincibility
 						spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
 						break;
-					case 1: // Gravedad
+					case 1: // Gravity
 						spriteRenderer.color = new Color(1f, 0.6f, 0.6f, alpha);
 						break;
 				}
@@ -65,7 +62,7 @@ public class PlayerState : MonoBehaviour {
 					activeItem = -1;
 					
 					gameObject.rigidbody2D.gravityScale = 0;
-					// Restaura la opacidad
+					// Restores opacity
 					spriteRenderer.color = new Color(1, 1, 1, 1);
 				}
 			}
@@ -97,7 +94,6 @@ public class PlayerState : MonoBehaviour {
 				} else {
 					gameObject.rigidbody2D.gravityScale = -1;
 				}
-				
 			}
 			
 			itemClock = itemTime;
