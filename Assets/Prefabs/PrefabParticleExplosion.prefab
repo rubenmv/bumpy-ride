@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.19310308, y: .91558075, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -35,7 +35,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  lengthInSec: .100000001
+  lengthInSec: 1
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -46,7 +46,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: .800000012
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -79,7 +79,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     startSpeed:
-      scalar: 15
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -206,7 +206,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .5
+      scalar: .300000012
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -291,7 +291,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 10
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -408,13 +408,13 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4282598350
+          rgba: 4281227709
         key1:
           serializedVersion: 2
-          rgba: 4429968
+          rgba: 4587502
         key2:
           serializedVersion: 2
-          rgba: 16777215
+          rgba: 10987431
         key3:
           serializedVersion: 2
           rgba: 0
@@ -431,14 +431,14 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 193
-        ctime1: 65535
-        ctime2: 65535
+        ctime1: 29876
+        ctime2: 41056
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 45296
+        atime0: 44525
         atime1: 65535
         atime2: 0
         atime3: 0
@@ -446,7 +446,7 @@ ParticleSystem:
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 2
       minGradient:
         key0:

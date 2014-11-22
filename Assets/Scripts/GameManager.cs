@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
 	private static GameManager _instance;
 		
@@ -14,28 +15,36 @@ public class GameManager : MonoBehaviour {
 	public int points = 0;
 	public int currentScene = 0;
 
-	public void setGameOver(bool isOver) {
+	public void setGameOver(bool isOver)
+	{
 		_isGameOver = isOver;
 	}
-	public bool getGameOver() {
+	public bool getGameOver()
+	{
 		return _isGameOver;
 	}
 
 	// Managers
-	public ObjectManager getObjectManager() {
+	public ObjectManager getObjectManager()
+	{
 		return _objectManager;
 	}
-	public AudioManager getAudioManager() {
+	public AudioManager getAudioManager()
+	{
 		return _audioManager;
 	}
-	public GuiManager getGuiManager() {
+	public GuiManager getGuiManager()
+	{
 		return _guiManager;
 	}
 
 	// Persistent Singleton
-	public static GameManager Instance {
-		get {
-			if(_instance == null) {
+	public static GameManager Instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
 				_instance = GameObject.FindObjectOfType<GameManager>();
 				
 				//Tell unity not to destroy this object when loading a new scene!
@@ -44,21 +53,27 @@ public class GameManager : MonoBehaviour {
 			return _instance;
 		}
 	}
-	void Awake() {
-		if(_instance == null) {
+	void Awake()
+	{
+		if (_instance == null)
+		{
 			//If I am the first instance, make me the Singleton
 			_instance = this;
 			DontDestroyOnLoad(this);
-		} else {
+		}
+		else
+		{
 			//If a Singleton already exists and you find
 			//another reference in scene, destroy it!
-			if(this != _instance) {
+			if (this != _instance)
+			{
 				Destroy(this.gameObject);
-			}
+			} 
 		}
 	}
 
-	void Start() {
+	void Start()
+	{
 		// Get managers
 		_objectManager = gameObject.GetComponent<ObjectManager>();
 		_objectManager.enabled = false;
@@ -70,25 +85,31 @@ public class GameManager : MonoBehaviour {
 		_windowSize = new Vector2(Screen.width, Screen.height);
 	}
 
-	public Vector2 getScreenSize() {
+	public Vector2 getScreenSize()
+	{
 		return _windowSize;
 	}
 	
-	private void init() {
+	private void init()
+	{
 		points = 0;
 		_isGameOver = false;
 	}
 
-	void Update() {
-		if(Input.GetKey("escape")) {
+	void Update()
+	{
+		if (Input.GetKey("escape"))
+		{
 			Application.Quit();
 		}
-		if(_isGameOver) {
+		if (_isGameOver)
+		{
 			StartCoroutine(waitForGameOver(3f));
 		}
 	}
 	//Coroutine
-	IEnumerator waitForGameOver(float seconds) {
+	IEnumerator waitForGameOver(float seconds)
+	{
 		// Make sure to trigger only one coroutine (they are independent)
 		_isGameOver = false;
 		yield return new WaitForSeconds(seconds);
@@ -96,20 +117,26 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// Load new level
-	public void loadLevel(int level) {
+	public void loadLevel(int level)
+	{
 		Application.LoadLevel(level);
 		init();
 	}
 
-	public void quit() {
+	public void quit()
+	{
 		Application.Quit();
 	}
 	
-	private void OnLevelWasLoaded(int level) {
-		if(level == 1) { // In Game
+	private void OnLevelWasLoaded(int level)
+	{
+		if (level == 1)
+		{ // In Game
 			_objectManager.enabled = true;
 			_audioManager.init();
-		} else {
+		}
+		else
+		{
 			_objectManager.enabled = false;
 		}
 		

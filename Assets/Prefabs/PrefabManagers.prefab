@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400006}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400004}
   - 82: {fileID: 8200000}
   m_Layer: 0
   m_Name: PrefabManagers
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 8300000, guid: 02a524289481770409142519ec3b9070, type: 3}
+  explosion: {fileID: 8300000, guid: b9f3a4f07ac361246b5bb4cbca57991d, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

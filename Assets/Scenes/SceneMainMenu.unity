@@ -338,6 +338,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 821744700}
+  - 114: {fileID: 821744701}
   m_Layer: 0
   m_Name: Camera-Background
   m_TagString: Untagged
@@ -359,6 +360,20 @@ Transform:
   - {fileID: 39047344}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &821744701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 34f33f0e1b8e0ee4384299b8fb6c61d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1453268595}
+  m_GameObject: {fileID: 821744699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edc9ea070c3fd4449b9f89eb6f2164c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeAmount: .25
+  decreaseFactor: 1
 --- !u!1 &825232132
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,8 +515,8 @@ GameObject:
   - 4: {fileID: 1426066545}
   - 114: {fileID: 1426066544}
   - 114: {fileID: 1426066543}
-  - 114: {fileID: 1426066542}
   - 114: {fileID: 1426066541}
+  - 114: {fileID: 1426066542}
   - 82: {fileID: 1426066540}
   m_Layer: 0
   m_Name: PrefabManagers
@@ -582,6 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 8300000, guid: 02a524289481770409142519ec3b9070, type: 3}
+  explosion: {fileID: 8300000, guid: b9f3a4f07ac361246b5bb4cbca57991d, type: 3}
 --- !u!114 &1426066542
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -109,7 +109,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 8893377}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -150,6 +150,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 101877062}
+  - 114: {fileID: 101877063}
   m_Layer: 0
   m_Name: Camera-Background
   m_TagString: Untagged
@@ -171,6 +172,20 @@ Transform:
   - {fileID: 1219346867}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &101877063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 34f33f0e1b8e0ee4384299b8fb6c61d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 641812996}
+  m_GameObject: {fileID: 101877061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edc9ea070c3fd4449b9f89eb6f2164c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeAmount: .25
+  decreaseFactor: 1
 --- !u!1 &260011461
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +198,6 @@ GameObject:
   - 92: {fileID: 260011464}
   - 124: {fileID: 260011463}
   - 81: {fileID: 260011462}
-  - 114: {fileID: 260011467}
   m_Layer: 0
   m_Name: Camera Main
   m_TagString: MainCamera
@@ -260,19 +274,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 101877062}
   m_RootOrder: 0
---- !u!114 &260011467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 260011461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0edc9ea070c3fd4449b9f89eb6f2164c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmount: .25
-  decreaseFactor: 1
 --- !u!1 &280306643
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +641,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1793532813}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255

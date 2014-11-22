@@ -3,26 +3,28 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public AudioClip clickSound;
+	public AudioClip clickSound;
 
 	private Vector2 direction;
-    private CameraShake cameraShaker;
+	private CameraShake cameraShaker;
 	private float friction = 0.98f;
 	private float speed = 3;
 	private Vector2 windowSize;
 	private float leftLimit;
 	private float rightLimit;
+	private AudioManager _audioManager;
 	
 	void Start()
 	{
 		windowSize = GameManager.Instance.getScreenSize();
+		_audioManager = GameManager.Instance.getAudioManager();
 
 		float margin = windowSize.x / 10;
     
 		leftLimit = Camera.main.ScreenToWorldPoint(new Vector3(margin, 0, 0)).x;
 		rightLimit = Camera.main.ScreenToWorldPoint(new Vector3(windowSize.x - margin, 0, 0)).x;
 
-        cameraShaker = (CameraShake)Camera.main.GetComponent<CameraShake>();
+		cameraShaker = GameObject.Find("Camera-Background").GetComponent<CameraShake>();
 	}
 
 	// Update is called once per frame
@@ -42,11 +44,10 @@ public class PlayerMovement : MonoBehaviour
 			applyForce(direction);
 
 			// Audio
-            audio.volume = 0.2f;
-			audio.PlayOneShot(clickSound);
+			_audioManager.playClip(clickSound, 0.2f);
 
-            // Camera shake
-            cameraShaker.shake(0.3f);
+			// Camera shake
+			cameraShaker.shake(0.3f);
 		}
 
 		// Screen limits
