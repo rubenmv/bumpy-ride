@@ -12,16 +12,23 @@ public class GameManager : MonoBehaviour
 	private Vector2 _windowSize;
 	
 	private bool _isGameOver;
+	private bool _waiting; // Waiting for game over screen
 	public int points = 0;
 	public int currentScene = 0;
+
 
 	public void setGameOver(bool isOver)
 	{
 		_isGameOver = isOver;
 	}
-	public bool getGameOver()
+	public bool isGameOver()
 	{
 		return _isGameOver;
+	}
+
+	public bool isWaiting()
+	{
+		return _waiting;
 	}
 
 	// Managers
@@ -94,6 +101,7 @@ public class GameManager : MonoBehaviour
 	{
 		points = 0;
 		_isGameOver = false;
+		_waiting = false;
 	}
 
 	void Update()
@@ -107,27 +115,38 @@ public class GameManager : MonoBehaviour
 			StartCoroutine(waitForGameOver(3f));
 		}
 	}
-	//Coroutine
+	/// <summary>
+	/// Waits for game over.
+	/// </summary>
+	/// <param name="seconds">Seconds to wait</param>
 	IEnumerator waitForGameOver(float seconds)
 	{
 		// Make sure to trigger only one coroutine (they are independent)
 		_isGameOver = false;
+		_waiting = true;
 		yield return new WaitForSeconds(seconds);
 		Application.LoadLevel("SceneGameOver");
 	}
 
-	// Load new level
+	/// <summary>
+	/// Loads the level.
+	/// </summary>
 	public void loadLevel(int level)
 	{
 		Application.LoadLevel(level);
 		init();
 	}
-
+	/// <summary>
+	/// Quit this instance.
+	/// </summary>
 	public void quit()
 	{
 		Application.Quit();
 	}
-	
+	/// <summary>
+	/// Raises the level was loaded event.
+	/// </summary>
+	/// <param name="level">Level.</param>
 	private void OnLevelWasLoaded(int level)
 	{
 		if (level == 1)

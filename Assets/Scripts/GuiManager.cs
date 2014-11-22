@@ -47,7 +47,7 @@ public class GuiManager : MonoBehaviour
 				GUI.Label(new Rect(50, _windowSize.y - 50, 200, 50), "http://rubenmv.github.io/");
 				break;
 			case 1: // In game
-				if (GUI.Button(new Rect(_buttonPosition.x + 100, 5, _buttonSize.x, _buttonSize.y / 1.5f), "Mute", guiSkin.button))
+				if (GUI.Button(new Rect(_windowSize.x - _buttonSize.x - 5, 5, _buttonSize.x / 2, _buttonSize.y / 1.5f), "Mute", guiSkin.button))
 				{
 					if (_audioManager == null)
 					{
@@ -56,16 +56,20 @@ public class GuiManager : MonoBehaviour
 					// Toggle muted
 					_audioManager.setMuted(!_audioManager.isMuted());
 				}
+				// Score
+				GUI.Label(new Rect(50, 10, 200, 50), "SCORE: " + _gameManager.points, guiSkin.label);
 				break;
 			case 2: // Game Over
 				if (GUI.Button(new Rect(_buttonPosition.x, _buttonPosition.y, _buttonSize.x, _buttonSize.y), "Restart", guiSkin.button))
 				{
 					_gameManager.loadLevel(1);
 				}
-				if (GUI.Button(new Rect(_buttonPosition.x, _buttonPosition.y + _buttonSize.y + 10, _buttonSize.x, _buttonSize.y), "Quit", guiSkin.button))
-				{
-					_gameManager.quit();
-				}
+//				if (GUI.Button(new Rect(_buttonPosition.x, _buttonPosition.y + _buttonSize.y + 10, _buttonSize.x, _buttonSize.y), "Quit", guiSkin.button))
+//				{
+//					_gameManager.quit();
+//				}
+				// Score
+				GUI.Label(new Rect(_windowSize.x / 2 - 130, 100, 200, 50), "TOTAL SCORE: " + _gameManager.points, guiSkin.GetStyle("LabelGameOverScore"));
 				break;
 		}	
 	}

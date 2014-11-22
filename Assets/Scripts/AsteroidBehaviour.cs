@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AsteroidBehaviour : MonoBehaviour {
+public class AsteroidBehaviour : MonoBehaviour
+{
 	float range = 15; // Sera el doble de esto
 	
 	//TextMesh pointsText;
 	
-	GameManager gameManager;
+	private GameManager _gameManager;
+	private GuiManager _guiManager;
 
 	// Use this for initialization
-	void Start() {
-		gameManager = GameManager.Instance;
+	void Start()
+	{
+		_gameManager = GameManager.Instance;
+		_guiManager = _gameManager.getGuiManager();
 
 		transform.position = new Vector2(20f, Random.Range(-3f, 3f));
 
@@ -22,32 +26,33 @@ public class AsteroidBehaviour : MonoBehaviour {
 		float yVelocity = Random.Range(-range, range);
 		float xVelocity = -20f;
 		
-		if(Mathf.Abs(yVelocity) < 5f) {
+		if (Mathf.Abs(yVelocity) < 5f)
+		{
 			xVelocity = -10f;
 		}
 
 		rigidbody2D.velocity = new Vector2(xVelocity, yVelocity);
 
 		// Se autodestruyen despues de x segundos
-		Destroy(gameObject, 8f);
-		
-		// El mismo meteorito es el que establece la puntuacion al morir
-		// Recogemos el componente de texto
-		if(!gameManager.getGameOver()) {
-			//GameObject go = GameObject.Find("3DTextPoints");
-			//pointsText = (TextMesh)go.GetComponent(typeof(TextMesh));
-		}
+		Destroy(gameObject, 80f);
 	}
 	
-	void FixedUpdate() {
+	void FixedUpdate()
+	{
 		// Comprueba si se ha salido de la pantalla, en su caso se destruye
 		Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 		
-		if(screenPosition.x < -5f) {
+		if (screenPosition.x < -5f)
+		{
 			// Punto para el jugador
-			gameManager.points++;
-			//pointsText.text = "PUNTOS: " + gameManager.points;
+			if (!_gameManager.isWaiting()) // Player dead. Waiting for game over screen
+			{
+				_gameManager.points++;
+			}
+
 			Destroy(gameObject);
 		}
 	}
+
+	
 }

@@ -37,7 +37,7 @@ public class PlayerState : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (!gameManager.getGameOver())
+		if (!gameManager.isGameOver())
 		{
 			// Item activo?
 			if (activeItem > -1)
