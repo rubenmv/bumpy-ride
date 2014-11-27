@@ -19,7 +19,9 @@ public class ObjectManager : MonoBehaviour
 
 	public void init()
 	{
-		Instantiate(prefabPlayer);
+		Object player = Instantiate(prefabPlayer);
+		player.name = "Player"; // Easier to find
+
 		// Tiempo entre la creacion de meteoros
 		_spawnTime = 2.0f;
 		_spawnTimer = 2.0f;

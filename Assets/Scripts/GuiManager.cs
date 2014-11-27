@@ -4,17 +4,16 @@ using System.Collections;
 public class GuiManager : MonoBehaviour
 {
 
-	Vector2 _windowSize;	
-	Vector2 _buttonSize;
-	Vector2 _buttonPosition;
-	Vector2 _titlePosition;
-
-	GameManager _gameManager;
-	AudioManager _audioManager;
-
+	private Vector2 _windowSize;
+	private Vector2 _buttonSize;
+	private Vector2 _buttonPosition;
+	private Vector2 _titlePosition;
+	private GameManager _gameManager;
+	private AudioManager _audioManager;
+	private PlayerState _playerState;
 	public GUISkin guiSkin;
 	public Texture titleTexture;
-
+    
 	// Use this for initialization
 	void Start()
 	{
@@ -38,15 +37,15 @@ public class GuiManager : MonoBehaviour
 				GUI.DrawTexture(new Rect(_titlePosition.x, _titlePosition.y, titleTexture.width, titleTexture.height), titleTexture, ScaleMode.ScaleToFit);
 				if (GUI.Button(new Rect(_buttonPosition.x, _buttonPosition.y, _buttonSize.x, _buttonSize.y), "New Game", guiSkin.button))
 				{
+					_playerState = null;
 					_gameManager.loadLevel(1);
 				}
 				if (GUI.Button(new Rect(_buttonPosition.x, _buttonPosition.y + _buttonSize.y + 10, _buttonSize.x, _buttonSize.y), "Quit", guiSkin.button))
 				{
 					_gameManager.quit();
 				}
-				GUI.Label(new Rect(50, _windowSize.y - 50, 200, 50), "http://rubenmv.github.io/");
-				break;
-			case 1: // In game
+                break;
+            case 1: // In Game
 				if (GUI.Button(new Rect(_windowSize.x - _buttonSize.x - 5, 5, _buttonSize.x / 2, _buttonSize.y / 1.5f), "Mute", guiSkin.button))
 				{
 					if (_audioManager == null)
@@ -58,10 +57,37 @@ public class GuiManager : MonoBehaviour
 				}
 				// Score
 				GUI.Label(new Rect(50, 10, 200, 50), "SCORE: " + _gameManager.points, guiSkin.label);
+				// Active item info
+				if (_playerState == null)
+				{
+					GameObject player = GameObject.Find("Player");
+					if (player != null)
+					{
+						_playerState = player.GetComponent<PlayerState>();
+					}
+				}
+				if (_playerState != null)
+				{
+					string message = "";
+
+					switch (_playerState.getActiveItem())
+					{
+						case 0:
+							message = "Invincibility!";
+							break;
+						case 1:
+							message = "Gravity Pull!";
+							break;
+					}
+
+					GUI.Label(new Rect(_windowSize.x / 2 - 150, 10, 200, 50), message, guiSkin.GetStyle("LabelItemMessage"));
+				}
+
 				break;
 			case 2: // Game Over
 				if (GUI.Button(new Rect(_buttonPosition.x, _buttonPosition.y, _buttonSize.x, _buttonSize.y), "Restart", guiSkin.button))
 				{
+					_playerState = null;
 					_gameManager.loadLevel(1);
 				}
 //				if (GUI.Button(new Rect(_buttonPosition.x, _buttonPosition.y + _buttonSize.y + 10, _buttonSize.x, _buttonSize.y), "Quit", guiSkin.button))

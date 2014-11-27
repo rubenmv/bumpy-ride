@@ -8,13 +8,11 @@ public class AsteroidBehaviour : MonoBehaviour
 	//TextMesh pointsText;
 	
 	private GameManager _gameManager;
-	private GuiManager _guiManager;
 
 	// Use this for initialization
 	void Start()
 	{
 		_gameManager = GameManager.Instance;
-		_guiManager = _gameManager.getGuiManager();
 
 		transform.position = new Vector2(20f, Random.Range(-3f, 3f));
 
