@@ -3,7 +3,7 @@ BumpyRide
 (https://github.com/rubenmv/BumpyRide)
 Unity game for mobile and browsers
 
-Play here: 
+Play here: http://rubenmv.github.io/bumpy-ride/
 
 The game consists on avoiding asteroids while traveling through space. Just tap to make the ship go some direction.
 
